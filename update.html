@@ -12,11 +12,10 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="text-center bgImageMain">
-	<div class="triangle-up"></div>
+<body class="text-center">
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead">
+      <header class="headerMargin">
         <div class="inner">
           <h3 class="masthead-brand logoHeader">GLOBAL LIBRARY</h3>
           <nav class="nav nav-masthead justify-content-center">
@@ -27,19 +26,35 @@
         </div>
       </header>
 
-      <main role="main" class="inner cover">
-		<i class="fas fa-book-reader fa-3x bookIcon"></i><br><br>
-        <h1 class="cover-heading logoHeader">GLOBAL LIBRARY</h1>
-		<hr>
-        <p class="lead homeDes">Digital library for viewing and updating books.</p>
-      </main>
+	  <main>
 
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>Global Library ©</p>
-        </div>
-      </footer>
-    </div>
+		  <div class="container">
+			  <h2 class="title">UPDATE BOOK</h2>
+			  <form>
+			    <div class="form-group" method="post" enctype="multipart/form-data" >
+			    	<label class="label" for="bookTitle">Book Title</label>
+					<input type="text" class="form-control" id="bookTitle">
+			    </div>
+			    <div class="form-group">
+					<label class="label" for="authorName">Author Name</label>
+   					<input type="text" class="form-control" id="authorName">
+			    </div>
+			    <div class="form-group">
+					<label for="description" class="label">Description</label>
+					<textarea type="textarea" rows="5" class="form-control" id="description"></textarea>
+			    </div>
 
-  </body>
+				<div class="form-group">
+					<label for="imageUpload" class="label">Upload Book Cover</label><br>
+					<input type="file" name="imageUpload" id="imageUpload">
+				</div>
+
+			    <button type="submit" class="btn btn-primary">Submit</button>
+			  </form>
+		  </div>
+
+	  </main>
+  </div>
+
+</body>
 </html>
