@@ -2,6 +2,16 @@
 	$page = 'Add Book';
 	require('templates/head.php');
 
+	if ($_POST) {
+		extract($_POST);
+
+		$errors = array();
+
+		if (!$bookTitle) {
+			array_push($errors, 'Title of the book is required');
+			var_dump('no book title');
+		}
+	}
  ?>
 
 <body class="text-center">
@@ -13,14 +23,14 @@
 
 		  <div class="container">
 			  <h2 class="title">ADD A BOOK</h2>
-			  <form>
-			    <div class="form-group" method="post" enctype="multipart/form-data" >
+			  <form method="post" action="index.php" enctype="multipart/form-data">
+			    <div class="form-group">
 			    	<label class="label" for="bookTitle">Book Title</label>
-					<input type="text" class="form-control" id="bookTitle">
+					<input type="text" name="bookTitle" class="form-control" id="bookTitle">
 			    </div>
 			    <div class="form-group">
 					<label class="label" for="authorName">Author Name</label>
-   					<input type="text" class="form-control" id="authorName">
+   					<input type="text" name="author" class="form-control" id="authorName">
 			    </div>
 			    <div class="form-group">
 					<label for="description" class="label">Description</label>
@@ -28,8 +38,8 @@
 			    </div>
 
 				<div class="form-group">
-					<label for="imageUpload" class="label">Upload Book Cover</label><br>
-					<input type="file" name="imageUpload" id="imageUpload">
+					<label for="image" class="label">Upload Book Cover</label><br>
+					<input type="file" name="image" id="imageUpload">
 				</div>
 
 			    <button type="submit" class="btn btn-primary">Submit</button>
