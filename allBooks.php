@@ -1,30 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<?php
+$page = 'Browse Library';
+require('templates/head.php');
+ ?>
 
-	<title>Global Library</title>
-
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/style.css">
-</head>
 
 <body class="text-center">
 
 	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-		<header class="headerMargin">
-			<div class="inner">
-			<h3 class="masthead-brand logoHeader">GLOBAL LIBRARY</h3>
-				<nav class="nav nav-masthead justify-content-center">
-					<a class="nav-link active" href="index.html">Home</a>
-					<a class="nav-link" href="allBooks.html">Browse Library</a>
-					<a class="nav-link" href="add.html">Add a book</a>
-				</nav>
-			</div>
-		</header>
+		<?php require('templates/header.php'); ?>
 
 		<main>
 			<div class="container">
@@ -36,8 +19,8 @@
 							<div class="card-body">
 								<h5 class="card-title">Book title</h5>
 								<p class="card-text">Some description about the book</p>
-								<a href="book.html" class="btn btn-primary">View Book</a>
-								<a href="update.html" class="btn btn-primary">Edit Details</a>
+								<a href="book.php" class="btn btn-primary">View Book</a>
+								<a href="update.php" class="btn btn-primary">Edit Details</a>
 							</div>
 						</div>
 					</div>
@@ -70,5 +53,4 @@
 		</main>
 	</div>
 
-</body>
-</html>
+<?php require('templates/scripts.php'); ?>
