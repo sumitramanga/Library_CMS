@@ -151,3 +151,27 @@ h5 {
 .headerMargin {
 	margin-bottom: 5em;
 }
+
+
+.deleteBookBtn {
+	float:left;
+}
+
+.submitBtn {
+	float: right;
+}
+
+.btn {
+	background-color: white;
+	border: 1px solid #CCA342;
+	color: #CCA342;
+	text-transform: uppercase;
+	font-weight: bold;
+	border-radius: 0;
+}
+
+.btn:hover{
+	background-color: white;
+	border-color: #CCA342;
+	color: #CCA342;
+}
