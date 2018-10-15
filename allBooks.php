@@ -12,6 +12,16 @@ require('templates/head.php');
 		<main>
 			<div class="container">
 				<h2 class="title">LIBRARY</h2>
+
+				<br><br>
+				<!-- download emmet simplified -->
+				<!-- fix spacing issue -->
+
+			<div class="row">
+				<div class="col"><a href="add.php" class="btn btn-light" style="font-weight:normal;">Add a book</a></div>
+				<br><br><br>
+			</div>
+
 				<div class="row">
 					<div class="col-sm">
 						<div class="card">
