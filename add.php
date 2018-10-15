@@ -52,7 +52,7 @@
 				$fileExt = strtolower(end($fileNameArray));
 
 				if (in_array($fileExt, $validExtensions) === false) {
-					array_push($errors, 'File can only be a jpg or png');
+					array_push($errors, 'File can only be a jpg, jpeg or png');
 				}
 			}
 
