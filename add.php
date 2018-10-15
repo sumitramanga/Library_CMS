@@ -1,5 +1,6 @@
 <?php
-	// require 'vendor/autoload.php';
+	require 'vendor/autoload.php';
+	use Intervention\Image\ImageManager;
 
 	$page = 'Add Book';
 	require('templates/head.php');
@@ -33,7 +34,66 @@
 			array_push($errors, 'Description is too long. Please enter a shorter description.');
 		}
 
+		if (isset($_FILES['image'])) {
+			$fileSize = $_FILES['image']['size'];
+			$fileTmp = $_FILES['image']['tmp_name'];
+			$fileType = $_FILES['image']['type'];
+			if ($fileSize === 0) {
+				array_push($errors, 'No image has been uploaded. Please upload an image.');
+			} elseif ($fileSize === 5000000) {
+				array_push($errors, 'File size is too large, It must be under 5MB');
+			} else {
+				$validExtensions = array('jpg', 'jpeg', 'png');
 
+				// Split and find the dot which is added to an array.
+				$fileNameArray = explode('.', $_FILES['image']['name']);
+
+				// converts string to lowercase
+				$fileExt = strtolower(end($fileNameArray));
+
+				if (in_array($fileExt, $validExtensions) === false) {
+					array_push($errors, 'File can only be a jpg or png');
+				}
+			}
+
+			if (empty($errors)) {
+				// Where the uploaded file will go
+				$destination = 'images/uploads';
+
+				// if this destination doesn't exists make the directory
+				if (! is_dir($destination)) {
+					mkdir('images/uploads/', 0777, true);
+				}
+
+			// This is so we can create a unqiue name for the file
+			$newFileName = uniqid() .'.'. $fileExt;
+			// move_uploaded_file($fileTmp, $destination.'/'.$newFileName);
+
+			$manager = new ImageManager();
+
+			$mainImage = $manager->make($fileTmp);
+			$mainImage->save($destination.'/'.$newFileName, 100);
+
+
+			$thumbDestination = 'images/uploads/thumbnails';
+
+				if (! is_dir($thumbDestination)) {
+					mkdir('images/uploads/thumbnails/', 0777, true);
+				}
+
+				// calling the make funciton
+				$thumbnailImage = $manager->make($fileTmp);
+
+				// Using the resize function
+				$thumbnailImage->resize(300, null, function($constraint){
+					$constraint->aspectRatio();
+					$constraint->upsize();
+				});
+
+				$thumbnailImage->save($thumbDestination.'/'.$newFileName, 100);
+
+			}
+		}
 	}
  ?>
 
@@ -68,7 +128,7 @@
 			    </div>
 			    <div class="form-group">
 					<label for="description" class="label">Description</label>
-					<textarea type="textarea" rows="5" class="form-control" id="description"></textarea>
+					<textarea type="textarea" name="description" rows="5" class="form-control" id="description"></textarea>
 			    </div>
 
 				<div class="form-group">
